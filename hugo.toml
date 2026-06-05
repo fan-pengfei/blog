@@ -34,7 +34,7 @@ enableEmoji = true
 
   [[params.socialIcons]]
     name = "github"
-    url = "https://github.com/fan-pengfei/blog"
+    url = "https://fan-pengfei.top/"
 
 [menu]
   [[menu.main]]
