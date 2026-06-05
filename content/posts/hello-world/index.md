@@ -5,11 +5,19 @@ draft: false
 tags: ["随笔", "Hugo"]
 categories: ["技术"]
 summary: "这是我用 Hugo + PaperMod 搭建的博客的第一篇文章。"
+cover:
+    image: "cover.jpg"
+    alt: "封面图"
+    caption: "这是封面图，会显示在文章顶部和列表页"
 ---
 
 ## 欢迎
 
 这是我用 **Hugo** + **PaperMod** 主题搭建的博客的第一篇文章 🎉。
+
+下面是一张正文配图（图片文件和本文放在同一个文件夹里，引用时直接写文件名）：
+
+![示例配图](sample.jpg)
 
 ## 写作很简单
 
