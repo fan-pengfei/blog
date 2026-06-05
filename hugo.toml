@@ -29,8 +29,8 @@ enableEmoji = true
   TocOpen = false
 
   [params.homeInfoParams]
-    Title = "Aal Izz Well 👋"
-    Content = "我是 Rancho。这里记录我的技术笔记与思考。"
+    Title = "你好 👋"
+    Content = "Aal Izz Well"
 
   [[params.socialIcons]]
     name = "github"
