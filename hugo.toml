@@ -1,6 +1,6 @@
 baseURL = "https://fan-pengfei.top/"
 locale = "zh-cn"
-title = "我的博客"
+title = "Aal Izz Well"
 theme = "PaperMod"
 
 pagination.pagerSize = 10
@@ -17,8 +17,8 @@ enableEmoji = true
 
 [params]
   env = "production"
-  description = "一个基于 Hugo + PaperMod 的极简博客"
-  author = "你的名字"
+  description = "Aal Izz Well —— Rancho 的技术笔记与思考"
+  author = "Rancho"
   defaultTheme = "auto"        # auto / light / dark
   ShowReadingTime = true
   ShowShareButtons = false
@@ -29,8 +29,8 @@ enableEmoji = true
   TocOpen = false
 
   [params.homeInfoParams]
-    Title = "你好 👋"
-    Content = "欢迎来到我的博客。这里记录我的技术笔记与思考。"
+    Title = "Aal Izz Well 👋"
+    Content = "我是 Rancho。一切都会好的 —— 这里记录我的技术笔记与思考。"
 
   [[params.socialIcons]]
     name = "github"
