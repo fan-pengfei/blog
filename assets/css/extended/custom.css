@@ -1,0 +1,32 @@
+/* 引入霞鹜文楷（屏幕优化版），CDN 加载 */
+@import url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css");
+
+:root {
+  /* 正文字体：霞鹜文楷优先，回退到系统字体 */
+  --lxgw: "LXGW WenKai Screen", "LXGW WenKai", -apple-system, BlinkMacSystemFont,
+    "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+}
+
+body {
+  font-family: var(--lxgw);
+}
+
+/* 标题、文章内容、导航也统一使用 */
+.post-title,
+.post-content,
+.entry-header,
+.first-entry,
+.nav,
+.menu {
+  font-family: var(--lxgw);
+}
+
+/* 代码块保持等宽字体，便于阅读代码 */
+code,
+pre,
+kbd,
+.post-content code,
+.post-content pre {
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas,
+    "Courier New", monospace;
+}
