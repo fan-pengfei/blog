@@ -1,6 +1,6 @@
 baseURL = "https://fan-pengfei.top/"
 locale = "zh-cn"
-title = "Aal Izz Well"
+title = "Rancho's Notes"
 theme = "PaperMod"
 
 pagination.pagerSize = 10
@@ -30,7 +30,7 @@ enableEmoji = true
 
   [params.homeInfoParams]
     Title = "Aal Izz Well 👋"
-    Content = "我是 Rancho。一切都会好的 —— 这里记录我的技术笔记与思考。"
+    Content = "我是 Rancho。这里记录我的技术笔记与思考。"
 
   [[params.socialIcons]]
     name = "github"
