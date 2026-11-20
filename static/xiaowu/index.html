@@ -1,15 +1,144 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f3eb"><title>乖乖和我的小屋</title><style>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#192e28"><title>乖乖和我的小屋</title><style>
 :root{--ink:#293d34;--quiet:#606d63;--line:#d5d8cc;--paper:#f7f6f0;--card:#fcfbf6;--accent:#365b47;--terra:#a45e3e;--serif:"Songti SC","STSong","SimSun",serif;--sans:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.55 var(--sans)}h1,h2,h3,p{margin:0}button,input,select{font:inherit;color:inherit}button,select,input[type=color]{cursor:pointer}button,select,input[type=number]{border:1px solid var(--line);background:var(--card);border-radius:5px;padding:7px 10px}button:hover{border-color:#759280;background:#e9eee4}button:disabled{opacity:.45;cursor:default}button:focus-visible,select:focus-visible,input:focus-visible,canvas:focus-visible{outline:3px solid #bc8153;outline-offset:2px}button.primary,.on{background:var(--accent);border-color:var(--accent);color:white}button.primary:hover,.on:hover{background:#254434;color:#fff}header{border-bottom:1px solid var(--line)}.bar,main{width:min(1510px,94%);margin:auto}.bar{min-height:61px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand,.actions,.seg,.tools,.group,.card-title,.size-fields,.hint,.num,.row,.navline{display:flex;align-items:center;gap:8px}.brand{font:600 20px var(--serif);letter-spacing:.07em}.brand svg{width:30px;height:30px}.brand small{font:12px var(--sans);border-left:1px solid var(--line);margin-left:6px;padding-left:13px;color:var(--quiet);letter-spacing:0}.actions button{font-size:12px}.titlebar{display:flex;align-items:end;justify-content:space-between;gap:18px;margin:24px 0 19px}.kicker{color:var(--quiet);font:600 10px/1.5 var(--sans);letter-spacing:.15em;margin-bottom:5px}h1{font:600 clamp(29px,3vw,43px)/1.2 var(--serif);letter-spacing:.04em}.titlebar p:last-child{color:var(--quiet);font-size:13px;margin-top:7px}.spec{border-left:2px solid #aebba6;padding-left:13px;font-size:12px;color:var(--quiet);text-align:left}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 304px;gap:15px;align-items:start}.viewport,.panel,.notes{background:var(--card);border:1px solid var(--line);border-radius:9px;overflow:hidden}.viewport{position:sticky;top:10px}.tools{padding:10px 12px;border-bottom:1px solid var(--line);justify-content:space-between;flex-wrap:wrap}.seg{gap:0;background:#e9ebe3;border:1px solid #d6dbcf;padding:2px;border-radius:6px}.seg button{border:0;background:transparent;color:var(--quiet);padding:5px 12px;font-size:12px}.seg button.on{background:var(--accent);color:white}.group button,.tools>button{font-size:12px}.stage{height:clamp(395px,52vh,670px);position:relative;background-color:#eaece4;background-image:radial-gradient(#bdc4b899 .8px,transparent .8px),radial-gradient(ellipse at 53% 43%,#f5f4eb 0%,#e8ebe1 75%);background-size:12px 12px,100% 100%;overflow:hidden}.stage canvas{width:100%;height:100%;display:block;touch-action:none;cursor:grab}.stage canvas:active{cursor:grabbing}.scene-label{position:absolute;left:15px;top:12px;pointer-events:none;color:#53674f;font-size:11px;letter-spacing:.05em}.stage .zoom-bar{position:absolute;bottom:12px;right:12px;display:flex;gap:3px}.zoom-bar button{background:#fcfbf1ed;width:34px;height:32px;padding:0;font-size:17px}.tags{position:absolute;inset:0;pointer-events:none}.tag{position:absolute;white-space:nowrap;transform:translate(-50%,-50%);font-size:10px;letter-spacing:.04em;border-radius:3px;background:#f9f8eccf;color:#394637;padding:1px 5px;box-shadow:0 1px 3px #32402a1f}.hint{padding:9px 13px;color:var(--quiet);font-size:11px;border-top:1px solid var(--line);min-height:37px;justify-content:space-between}.hint span:last-child{white-space:nowrap}.panel{padding:16px}.card-title{justify-content:space-between;margin-bottom:9px}.card-title h2,.notes h2{font:600 19px var(--serif)}.card-title small{font-size:10px;letter-spacing:.06em;color:var(--quiet)}.panel section+section{border-top:1px solid var(--line);padding-top:13px;margin-top:13px}.row{align-items:stretch}.row>select{flex:1;min-width:0}.row button{font-size:12px}.field{display:block;font-size:12px;color:var(--quiet);margin:9px 0 4px}select{max-width:100%;background-color:#fffefa;font-size:13px}.finishes{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.finish{font-size:10px;padding:3px 1px;background:transparent;border:1px solid transparent}.finish span{display:block;height:19px;margin:0 2px 3px;border-radius:2px;background:var(--sw)}.finish.wood span{background:repeating-linear-gradient(4deg,#ffffff17 0px 2px,#00000009 3px 4px),var(--sw)}.finish.selected{border-color:#748d78;background:#e9eee3}.color-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.color-row button{width:25px;height:25px;border-radius:50%;background:var(--sw);border:1px solid #0002}.color-row .selected{outline:2px solid var(--accent);outline-offset:2px}.color-row label{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--quiet);cursor:pointer}.color-row input,input[type=color]{width:30px;height:25px;border:1px solid var(--line);padding:1px;background:white;border-radius:3px}.furniture{width:100%}.empty{font-size:12px;color:var(--quiet);margin:6px 0}.edit{margin-top:8px}.size-fields{align-items:end;flex-wrap:wrap;margin-bottom:8px}.size-fields label{font-size:11px;color:var(--quiet);flex:1;min-width:0}.size-fields input[type=number]{width:100%;padding:5px;font-size:12px;display:block}.size-fields .small-color{flex:.55}.small-color input{display:block}.edit .group{flex-wrap:wrap;gap:5px}.edit button{font-size:11px;padding:5px 8px}.add{margin-top:8px}.warning{font-size:11px;color:#985132;margin:6px 0}.notes{margin-top:14px;padding:15px 17px}.notes-head{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}.notes h3{font:600 14px var(--sans)}.notes p{font-size:13px;color:var(--quiet)}.note-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:11px;border-top:1px solid var(--line);padding-top:10px}.note-grid p{font-size:12px;margin-top:3px}.note-grid b{font-size:12px}footer{display:flex;justify-content:space-between;gap:12px;color:var(--quiet);font-size:11px;margin:17px 0 24px}.save{min-height:18px}.status{color:var(--terra)}[hidden]{display:none!important}
 @media(min-width:1450px){.workspace{grid-template-columns:minmax(0,1fr) 335px}.panel{padding:19px}.stage{height:clamp(500px,58vh,740px)}}@media(max-width:900px){.bar,main{width:96%}.workspace{grid-template-columns:minmax(0,1fr) 257px;gap:9px}.panel{padding:12px}.stage{height:395px}.tools{padding:7px;gap:6px}.group{gap:4px}.hint{flex-wrap:wrap}.seg button{padding:5px 9px}}@media(max-width:690px){.brand small,.spec{display:none}.bar,main{width:94%}.bar{min-height:54px}.brand{font-size:18px}.actions{gap:4px}.actions button{padding:5px 7px;font-size:11px}.titlebar{margin:17px 0 12px}.workspace{grid-template-columns:1fr}.viewport{position:static}.stage{height:clamp(300px,53vh,480px)}.tag{font-size:9px}.panel{padding:15px}.note-grid{grid-template-columns:1fr;gap:7px}footer{flex-wrap:wrap}.actions #undo{font-size:0}.actions #undo:before{content:"↶";font-size:16px}.scene-label{font-size:10px;left:10px;top:8px}.size-fields input[type=number]{font-size:16px}.tools{gap:4px}.group button{padding:5px 7px}.hint{font-size:10px}}
 
 .tag{text-align:center;line-height:1.25;background:#fbfaf0eb;padding:3px 5px}.tag small{display:block;color:#415248;font:500 10px/1.25 var(--sans);font-variant-numeric:tabular-nums}.room-size{font-size:12px;color:var(--quiet);margin:7px 0}.size-link{font-size:12px;color:var(--accent);text-underline-offset:3px}.sizes{scroll-margin:12px}.sizes table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:13px}.sizes caption{text-align:left;padding:0 0 10px;color:var(--quiet);font-size:12px}.sizes th,.sizes td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left}.sizes thead th,.sizes tfoot{background:#e9eee3}.sizes th{font-weight:600}.sizes tr>:last-child{text-align:right;white-space:nowrap}.sizes td small{display:block;font-size:11px;color:var(--quiet)}.sizes .suite-total{margin-top:10px;font-weight:600;color:var(--ink)}@media(max-width:690px){.sizes th,.sizes td{padding:7px 4px}.sizes table{font-size:12px}.tag small{font-size:9px}.tag{padding:2px 3px}}
-.layouts{margin-bottom:14px}.layouts h2{font:600 18px var(--serif);margin-bottom:8px}.plan-choices{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.planChoice{display:flex;align-items:center;text-align:left;gap:12px;padding:10px 12px}.planChoice svg{width:72px;flex:none}.planChoice b,.planChoice small{display:block}.planChoice small,.combo p,.plan-help,.references p{color:var(--quiet);font-size:12px}.planChoice.chosen{border-color:#54745b;background:#e8eee2;box-shadow:inset 0 0 0 1px #54745b}.combo{display:flex;gap:15px;align-items:center;margin:10px 0 4px}.combo label{font-size:13px;white-space:nowrap}.combo select{margin-left:6px;padding:5px}.plan-help{font-size:11px}.references{padding:14px 16px;border:1px solid var(--line);border-radius:7px;margin-top:12px}.references summary{cursor:pointer}.references p{margin:8px 0}.references a{color:var(--accent);margin-left:7px}@media(max-width:800px){.planChoice{flex-direction:column;gap:3px;align-items:flex-start}.planChoice svg{width:65px}.combo{flex-wrap:wrap;gap:6px}}@media(max-width:500px){.planChoice{padding:7px}.planChoice small{display:none}.planChoice b{font-size:12px}.plan-choices{gap:5px}}#marquee{position:absolute;pointer-events:none;border:1px solid #397256;background:#57886b33;z-index:4}#exitDetail{position:absolute;left:12px;bottom:12px;font-size:12px}.selection-row,.library-head{display:flex;align-items:center;gap:10px;margin:5px 0;flex-wrap:wrap}.selection-row button{font-size:11px;padding:2px 6px}.selection-row span,.library-head small,#trade{font-size:12px;color:var(--quiet)}.library-head{margin-bottom:9px}.library-head h2{margin:0 6px 0 0}.library-head label{font-size:12px}.plan-choices{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.planChoice{padding:8px}.planChoice small{line-height:1.4;font-size:11px}.combo{flex-wrap:wrap}.refgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:14px 0}.refgrid h3{font-size:15px}.refgrid a{font-size:12px;margin-left:0}.references details{border-top:1px solid var(--line);padding-top:10px}@media(max-width:690px){.refgrid{grid-template-columns:1fr}.plan-choices{grid-template-columns:repeat(2,1fr)}.planChoice{flex-direction:row;align-items:center}.planChoice svg{width:47px}.planChoice small{display:none}.combo label{font-size:12px}.combo select{max-width:100%;font-size:11px}.library-head small{font-size:10px}}</style></head><body><header><div class="bar"><div class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="5" fill="#365b47"/><path d="m6 12 10-6 10 6v11l-10 5-10-5zm0 0 10 6 10-6m-10 6v10m-5-13v-6" fill="none" stroke="#f3efde" stroke-width="1.35"/></svg>乖乖和我的小屋 <small>家装设计室</small></div><div class="actions"><button id="undo" title="撤销上一次编辑">撤销</button><button id="importBtn">导入方案</button><button class="primary" id="exportBtn">导出方案 ↓</button><input type="file" id="file" accept=".json,application/json" hidden></div></div></header>
-<main><div class="titlebar"><div><p class="kicker">HOME PLANNER</p><h1>乖乖和我的小屋</h1><p id="planSubtitle">三室一厅两卫 · 主卧套房 / 儿童房 / 电子工作室兼化妆间</p></div><div class="spec" id="spec"></div></div>
-<section class="layouts" aria-label="户型组合"><div class="library-head"><h2>户型方案库</h2><label>模型面积 <select id="areaFilter"></select></label><small>28 套基础方案 · 8 个面积段</small></div><div id="planChoices" class="plan-choices"></div><div class="combo"><label>三房位置 <select id="variant"></select></label><label>朝向 <select id="mirror"><option value="no">原方向</option><option value="yes">东西镜像</option></select></label></div><p id="trade"></p><p class="plan-help">平面图上北下南。每个组合独立保存；新增户型切换三房位置时，首次打开会按新门洞重新配家具并沿用各房配色。东西镜像会带上当前布置。</p></section><div class="workspace"><div><section class="viewport" aria-label="三维装修视图"><div class="tools"><div class="seg"><button id="three" class="on">3D 视图</button><button id="top">俯视平面</button></div><div class="group"><button id="multi">多选</button><button id="labels">房名与面积</button><button id="cut">低墙</button><button id="home">全屋复位</button></div></div><div class="stage" id="stage"><canvas id="canvas" tabindex="0" aria-label="三维户型，可拖动空白处旋转，选中家具后拖动移动；方向键微调家具位置"></canvas><div id="marquee" hidden></div><button id="exitDetail" hidden>退出特写</button><div class="tags" id="tags"></div><span class="scene-label" id="sceneLabel"></span><div class="zoom-bar"><button id="out" aria-label="缩小">−</button><button id="in" aria-label="放大">＋</button></div></div><div class="hint"><span>拖动旋转或移动 · Shift 加选 / 框选 · 滚轮缩放</span><span id="zoomText"></span></div></section>
-<section class="notes"><div class="notes-head"><h2>空间笔记</h2><span id="noteName"></span></div><p id="note"></p><div class="note-grid" id="details"></div></section></div>
-<aside class="panel"><section><div class="card-title"><h2>空间设置</h2><small id="area"></small></div><div class="row"><select id="room" aria-label="选择房间"></select><button id="focus">单间查看</button></div><p id="roomSize" class="room-size"></p><a class="size-link" href="#sizes">查看全屋尺寸表 ↓</a><span class="field">地面材质</span><div id="finishes" class="finishes"></div><span class="field">墙面颜色</span><div class="color-row" id="walls"><label>自选<input type="color" id="wallColor" aria-label="自定义墙面颜色"></label></div></section>
-<section><div class="card-title"><h2>家具布置</h2><small id="count"></small></div><div class="selection-row"><span id="selectionInfo"></span><button id="clearSelection" hidden>清除选择</button></div><select id="objects" class="furniture" aria-label="选择房内家具"></select><div id="edit" class="edit" hidden><div class="size-fields"><label>宽 / m<input id="width" type="number" min=".2" max="5" step=".05"></label><label>深 / m<input id="depth" type="number" min=".2" max="5" step=".05"></label><label class="small-color">颜色<input id="itemColor" type="color"></label></div><div class="group"><button id="inspect">家具特写</button><button id="rotate">旋转 90°</button><button id="remove">移除</button></div><p class="empty">拖动家具移动，也可用方向键微调 5 厘米。</p></div><p id="empty" class="empty">点选模型中的家具，或从列表中选择。</p><p id="collision" class="warning" hidden>这件家具与其他家具的占地有重叠。</p><label class="field" for="catalog">添加到当前房间</label><div class="row add"><select id="catalog"></select><button id="add" class="primary">＋ 添加</button></div></section><section><p class="save" id="save" role="status"></p></section></aside></div>
+.layouts{margin-bottom:14px}.layouts h2{font:600 18px var(--serif);margin-bottom:8px}.plan-choices{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.planChoice{display:flex;align-items:center;text-align:left;gap:12px;padding:10px 12px}.planChoice svg{width:72px;flex:none}.planChoice b,.planChoice small{display:block}.planChoice small,.combo p,.plan-help,.references p{color:var(--quiet);font-size:12px}.planChoice.chosen{border-color:#54745b;background:#e8eee2;box-shadow:inset 0 0 0 1px #54745b}.combo{display:flex;gap:15px;align-items:center;margin:10px 0 4px}.combo label{font-size:13px;white-space:nowrap}.combo select{margin-left:6px;padding:5px}.plan-help{font-size:11px}.references{padding:14px 16px;border:1px solid var(--line);border-radius:7px;margin-top:12px}.references summary{cursor:pointer}.references p{margin:8px 0}.references a{color:var(--accent);margin-left:7px}@media(max-width:800px){.planChoice{flex-direction:column;gap:3px;align-items:flex-start}.planChoice svg{width:65px}.combo{flex-wrap:wrap;gap:6px}}@media(max-width:500px){.planChoice{padding:7px}.planChoice small{display:none}.planChoice b{font-size:12px}.plan-choices{gap:5px}}#marquee{position:absolute;pointer-events:none;border:1px solid #397256;background:#57886b33;z-index:4}#exitDetail{position:absolute;left:12px;bottom:12px;font-size:12px}.selection-row,.library-head{display:flex;align-items:center;gap:10px;margin:5px 0;flex-wrap:wrap}.selection-row button{font-size:11px;padding:2px 6px}.selection-row span,.library-head small,#trade{font-size:12px;color:var(--quiet)}.library-head{margin-bottom:9px}.library-head h2{margin:0 6px 0 0}.library-head label{font-size:12px}.plan-choices{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.planChoice{padding:8px}.planChoice small{line-height:1.4;font-size:11px}.combo{flex-wrap:wrap}.refgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:14px 0}.refgrid h3{font-size:15px}.refgrid a{font-size:12px;margin-left:0}.references details{border-top:1px solid var(--line);padding-top:10px}@media(max-width:690px){.refgrid{grid-template-columns:1fr}.plan-choices{grid-template-columns:repeat(2,1fr)}.planChoice{flex-direction:row;align-items:center}.planChoice svg{width:47px}.planChoice small{display:none}.combo label{font-size:12px}.combo select{max-width:100%;font-size:11px}.library-head small{font-size:10px}}:root {
+  --ink: #243b33;
+  --quiet: #50645b;
+  --line: #d7ded4;
+  --paper: #f3f5ee;
+  --card: #fbfcf8;
+  --accent: #305c4c;
+}
+body { font-size: 16px; }
+header { background: #192e28; color: #f5f6ef; border: 0; }
+.bar { min-height: 64px; }
+.brand small { color: #b9cec0; border-color: #50695d; }
+.actions button { background: #2d453c; border-color: #557065; color: #f5f6ef; font-size: 13px; }
+.actions button:hover { background: #3a5649; }
+.actions button.primary { background: #e3ecd7; border-color: #e3ecd7; color: #233c30; }
+.titlebar { margin: 23px 0 15px; align-items: center; }
+.titlebar h1 { font-size: clamp(27px, 3vw, 44px); letter-spacing: .01em; }
+.titlebar p:last-child { font-size: 14px; }
+.spec { border-left: 0; border-radius: 8px; background: #e5ece1; padding: 8px 12px; font-size: 13px; }
+.layouts { border: 1px solid var(--line); background: var(--card); border-radius: 10px; }
+.layouts > summary { cursor: pointer; padding: 11px 15px; font-size: 15px; font-weight: 600; }
+.layouts > summary span + span { color: var(--quiet); font-size: 13px; font-weight: 400; margin-left: 12px; }
+.library-content { padding: 2px 15px 12px; }
+.workspace { grid-template-columns: minmax(0, 1fr) minmax(295px, 25%); }
+.viewport, .panel, .notes { border-radius: 12px; box-shadow: 0 5px 19px #233f2c06; }
+.mode-bar { display: flex; gap: 8px; padding: 10px 12px; background: #e4ebe0; }
+.mode-bar button { display: inline-flex; align-items: center; gap: 7px; padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 600; }
+.mode-dot { width: 7px; height: 7px; background: #b27739; border-radius: 50%; }
+.mode-bar .on .mode-dot { background: #f2c38c; }
+.stage {
+  height: clamp(430px, 56vh, 710px);
+  background-color: #e4ebe2;
+  background-image: radial-gradient(#a3b6a481 .7px, transparent .8px), radial-gradient(ellipse at 50% 44%, #f1f5ec, #dce8dc);
+  background-size: 14px 14px, 100% 100%;
+}
+.stage[data-preview="movie"], .stage[data-preview="night"] {
+  background-color: #243830;
+  background-image: radial-gradient(#90aa9766 .7px, transparent .8px), radial-gradient(ellipse at 50% 44%, #56695a, #263931);
+}
+.stage[data-preview="movie"] .scene-label, .stage[data-preview="night"] .scene-label { color: #f0f5ed; }
+.scene-label { color: #365749; background: #e0ebe062; padding: 4px 8px; border-radius: 7px; font-size: 12px; }
+.stage[data-preview="movie"] .scene-label, .stage[data-preview="night"] .scene-label { background: #1e332aba; }
+.tag { font-size: 11px; background: #fbfcf6f1; box-shadow: 0 2px 8px #2449361a; border-radius: 5px; }
+.tools .group button, .tools .seg button, .hint { font-size: 13px; }
+.smart-pins { position: absolute; inset: 0; pointer-events: none; }
+.smart-pin {
+  position: absolute; transform: translate(-50%, -50%); pointer-events: auto; padding: 3px 8px 3px 6px;
+  min-height: 28px; background: #f9fbf4; color: #274639; border: 1px solid #97ad9d;
+  border-radius: 14px; box-shadow: 0 3px 9px #12292038; white-space: nowrap;
+  font-size: 12px; font-weight: 600; display: flex; gap: 5px; align-items: center;
+}
+.smart-pin i { width: 7px; height: 7px; border-radius: 50%; background: #799789; }
+.smart-pin.is-live i { background: #bf702a; box-shadow: 0 0 0 3px #efc79680; }
+.smart-pin[aria-pressed="true"] { color: #fff; background: #305c4c; border-color: #f8fbf2; z-index: 1; }
+.smart-pin[aria-pressed="true"] i { background: #f4c48e; }
+#planScale {
+  position: absolute; left: 14px; bottom: 12px; pointer-events: none; display: flex; align-items: end; gap: 10px;
+  font-size: 11px; background: #f8fbf1ea; color: #345244; border-radius: 7px; padding: 5px 9px;
+}
+#scaleLine { display: block; border: 1px solid #365b47; border-top: 0; height: 5px; }
+.north-arrow { display: grid; justify-items: center; line-height: 1.15; }
+#smartPanel h2 { font: 600 20px var(--serif); }
+#smartPanel p { font-size: 13px; color: var(--quiet); margin-top: 5px; }
+.scenario-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; padding: 7px 12px; border-bottom: 1px solid var(--line); background: #f1f5ed; }
+.scenario-grid button { text-align: left; padding: 5px 9px; border-radius: 8px; font-size: 14px; }
+.scenario-grid button span { font-size: 12px; color: var(--quiet); display: block; }
+.scenario-grid button.on span { color: #d9e9d9; }
+#smartPanel .scenario-summary { background: #e7eee3; margin-top: 9px; border-radius: 7px; padding: 7px 9px; }
+.device-panel select { width: 100%; }
+#smartPanel .device-status { color: var(--ink); font-weight: 600; margin-top: 9px; }
+#tryAppliance { margin-top: 9px; font-size: 13px; }
+#budgetTotal { display: block; font-weight: 600; color: #234c3b; font-size: clamp(20px, 2.1vw, 29px); font-variant-numeric: tabular-nums; white-space: nowrap; }
+#budgetRows { margin-top: 7px; display: grid; gap: 0; }
+.budget-panel details { margin-top: 9px; font-size: 13px; }
+.budget-panel summary { cursor: pointer; }
+.budget-row { display: grid; grid-template-columns: auto 1fr; column-gap: 7px; align-items: center; padding: 6px 1px; border-bottom: 1px solid var(--line); }
+.budget-row input { accent-color: var(--accent); }
+.budget-row span + span { grid-column: 2; font-size: 12px; color: var(--quiet); font-variant-numeric: tabular-nums; }
+.budget-source a { color: var(--accent); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 900px) {
+  .workspace { grid-template-columns: minmax(0, 1fr) 263px; }
+  .stage { height: clamp(365px, 53vh, 480px); }
+}
+@media (max-width: 690px) {
+  .workspace { grid-template-columns: 1fr; }
+  .bar { min-height: 55px; }
+  .brand { font-size: 16px; letter-spacing: 0; gap: 4px; }
+  .brand svg { width: 24px; height: 24px; }
+  .actions button { font-size: 11px; }
+  .stage { height: clamp(315px, 51vh, 460px); }
+  .titlebar { margin: 16px 0 11px; }
+  .mode-bar { padding: 7px 9px; }
+  .scenario-grid { padding: 6px 8px; gap: 5px; }
+  .scenario-grid button { text-align: center; padding: 4px 5px; font-size: 13px; }
+  .scenario-grid button span { display: none; }
+  .tools .group button, .tools .seg button, .hint { font-size: 11px; }
+  .smart-pin { padding: 3px 5px; min-height: 25px; font-size: 10px; gap: 3px; }
+  .smart-pin i { width: 5px; height: 5px; }
+}
+
+</style></head><body><header><div class="bar"><div class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="5" fill="#365b47"/><path d="m6 12 10-6 10 6v11l-10 5-10-5zm0 0 10 6 10-6m-10 6v10m-5-13v-6" fill="none" stroke="#f3efde" stroke-width="1.35"/></svg>乖乖和我的小屋 <small>家装设计室</small></div><div class="actions"><button id="undo" title="撤销上一次编辑">撤销</button><button id="importBtn">导入方案</button><button class="primary" id="exportBtn">导出方案</button><input type="file" id="file" accept=".json,application/json" hidden></div></div></header>
+<main><div class="titlebar"><div><h1 id="activePlan">乖乖和我的小屋</h1><p id="planSubtitle">三室一厅两卫 · 主卧套房 / 儿童房 / 电子工作室兼化妆间</p></div><div class="spec" id="spec"></div></div>
+<details class="layouts" aria-label="户型组合"><summary><span>户型方案库</span><span id="planChip"></span></summary><div class="library-content"><div class="library-head"><label>模型面积 <select id="areaFilter"></select></label><small>28 套基础方案 · 8 个面积段</small></div><div id="planChoices" class="plan-choices"></div><div class="combo"><label>三房位置 <select id="variant"></select></label><label>朝向 <select id="mirror"><option value="no">原方向</option><option value="yes">东西镜像</option></select></label></div><p id="trade"></p><p class="plan-help">平面图上北下南。每个组合独立保存；新增户型切换三房位置时，首次打开会按新门洞重新配家具并沿用各房配色。东西镜像会带上当前布置。</p></div></details><div class="workspace"><div><section class="viewport" aria-label="三维装修视图"><div class="mode-bar" role="group" aria-label="工作区">
+<button id="designMode" class="on" type="button" aria-controls="designPanel" aria-pressed="true">装修布置</button>
+<button id="smartMode" type="button" aria-controls="smartPanel" aria-pressed="false">米家体验<span class="mode-dot" aria-hidden="true"></span></button>
+</div>
+<div class="tools"><div class="seg"><button id="three" class="on">3D 视图</button><button id="top">俯视平面</button></div><div class="group"><button id="multi">多选</button><button id="labels">房名与面积</button><button id="cut">低墙</button><button id="home">全屋复位</button></div></div><div id="scenarioButtons" class="scenario-grid" role="group" aria-label="联动场景" hidden></div><div class="stage" id="stage"><canvas id="canvas" tabindex="0" aria-label="三维户型，可拖动空白处旋转，选中家具后拖动移动；方向键微调家具位置"></canvas><div id="planScale" aria-hidden="true" hidden><div class="north-arrow">▲<span>北</span></div><div><span id="scaleLabel"></span><i id="scaleLine"></i></div></div>
+<div id="smartPins" class="smart-pins" role="group" aria-label="全屋设备点位" hidden></div>
+<div id="marquee" hidden></div><button id="exitDetail" hidden>退出特写</button><div class="tags" id="tags"></div><span class="scene-label" id="sceneLabel"></span><div class="zoom-bar"><button id="out" aria-label="缩小">−</button><button id="in" aria-label="放大">＋</button></div></div><div class="hint"><span id="stageHint">拖动旋转或移动 · Shift 加选 / 框选 · 滚轮缩放</span><span id="zoomText"></span></div></section>
+</div>
+<aside class="panel">
+<div id="smartPanel" hidden>
+<section class="smart-intro"><h2>全屋联动</h2><p>点选户型中的设备，查看联动状态和预留条件。</p>
+<p id="scenarioSummary" class="scenario-summary" role="status" hidden></p>
+</section>
+<section class="device-panel" aria-labelledby="deviceTitle">
+<div class="card-title"><h2 id="deviceTitle">设备点位</h2><small id="deviceRoom"></small></div>
+<label class="sr-only" for="devicePicker">选择设备点位</label><select id="devicePicker"></select>
+<p id="deviceStatus" class="device-status"></p>
+<p id="devicePrep"></p>
+<button id="tryAppliance" type="button" hidden>试摆 3D 模型</button>
+</section>
+<section class="budget-panel" aria-labelledby="budgetHeading">
+<div class="card-title"><h2 id="budgetHeading">家电预算</h2><small>154 ㎡参考</small></div>
+<output id="budgetTotal" aria-live="polite"></output>
+<p id="budgetInstall">设备估算价 · 安装辅材另预留 ¥2,000–4,000</p>
+<details><summary>调整设备清单</summary><div id="budgetRows"></div>
+<p class="budget-source"><a href="https://www.mi.com/shop" target="_blank" rel="noopener noreferrer">小米商城价格参考</a></p>
+</details>
+</section>
+</div>
+<div id="designPanel"><section><div class="card-title"><h2>空间设置</h2><small id="area"></small></div><div class="row"><select id="room" aria-label="选择房间"></select><button id="focus">单间查看</button></div><p id="roomSize" class="room-size"></p><a class="size-link" href="#sizes">查看全屋尺寸表 ↓</a><span class="field">地面材质</span><div id="finishes" class="finishes"></div><span class="field">墙面颜色</span><div class="color-row" id="walls"><label>自选<input type="color" id="wallColor" aria-label="自定义墙面颜色"></label></div></section>
+<section><div class="card-title"><h2>家具布置</h2><small id="count"></small></div><div class="selection-row"><span id="selectionInfo"></span><button id="clearSelection" hidden>清除选择</button></div><select id="objects" class="furniture" aria-label="选择房内家具"></select><div id="edit" class="edit" hidden><div class="size-fields"><label>宽 / m<input id="width" type="number" min=".2" max="5" step=".05"></label><label>深 / m<input id="depth" type="number" min=".2" max="5" step=".05"></label><label class="small-color">颜色<input id="itemColor" type="color"></label></div><div class="group"><button id="inspect">家具特写</button><button id="rotate">旋转 90°</button><button id="remove">移除</button></div><p class="empty">拖动家具移动，也可用方向键微调 5 厘米。</p></div><p id="empty" class="empty">点选模型中的家具，或从列表中选择。</p><p id="collision" class="warning" hidden>这件家具与其他家具的占地有重叠。</p><label class="field" for="catalog">添加到当前房间</label><div class="row add"><select id="catalog"></select><button id="add" class="primary">＋ 添加</button></div></section><section><p class="save" id="save" role="status"></p></section></div></aside></div>
+<section class="notes"><div class="notes-head"><h2>空间笔记</h2><span id="noteName"></span></div><p id="note"></p><div class="note-grid" id="details"></div></section>
 <section class="notes sizes" id="sizes" aria-labelledby="sizeHeading"><div class="notes-head"><h2 id="sizeHeading">全屋尺寸表</h2></div><table><caption>按模型分区边界计算，墙厚未扣除。开间为图中东西向尺寸，进深为南北向尺寸。</caption><thead><tr><th scope="col">空间</th><th scope="col">开间 × 进深</th><th scope="col">约合面积</th></tr></thead><tbody id="sizeRows"></tbody><tfoot><tr><th scope="row" colspan="2">全屋合计</th><td id="totalArea"></td></tr></tfoot></table><p class="suite-total" id="suiteSummary"></p></section>
 <section class="notes references" id="suzhou"><h2>苏州小区户型参考</h2><p>楼盘资料采用建筑面积，以下 3D 方案采用模型外框的分区面积。三房用途、套卫位置与镜像均为概念设计。</p>
 <div class="refgrid"><div><h3>吴江盛泽 · 碧桂园时代城</h3><p>小区资料列出约 120 ㎡ 三居、双卧朝南。可在 120 ㎡ 中央客餐厅方案中试选两间南侧房作为主卧和儿童房，把电子工作与梳妆放在另一侧。</p><a href="https://m.fang.com/xiaoqu/suzhou/1822200932.html" target="_blank" rel="noopener noreferrer">查看小区户型介绍 ↗</a></div><div><h3>万科玲珑东区</h3><p>公开图册列有建面约 115、127 ㎡ 三房和 140、170 ㎡ 四房。用作从紧凑到宽裕户型的尺度参照，大面积模型仍将第三房留给工作和梳妆。</p><a href="https://www.focus.cn/xf/suzhou-141340/" target="_blank" rel="noopener noreferrer">查看小区户型图册 ↗</a></div>
@@ -34,7 +163,10 @@ const library={
  wardrobe:['衣柜',1.35,.60,1.6,'#cdbda5'],shelf:['低收纳架',1.15,.38,.76,'#ba9b76'],plant:['绿植',.54,.54,.83,'#77916d'],
  counter:['备餐地柜',1.4,.61,.86,'#bdc4ae'],sink:['洗涤台',1.35,.62,.86,'#b8bfaa'],hob:['灶台',1.18,.62,.86,'#b8bfaa'],
  fridge:['冰箱',.72,.72,1.58,'#c1c7be'],basin:['洗手台',.82,.48,.83,'#aab8ac'],wc:['坐便器',.44,.69,.76,'#e8e8df'],
- shower:['淋浴区',.9,.9,1.55,'#aebfb8'],rug:['地毯',2.45,1.65,.016,'#cfc4ad'],stool:['梳妆凳',.43,.43,.44,'#ba9c8c']
+ shower:['淋浴区',.9,.9,1.55,'#aebfb8'],rug:['地毯',2.45,1.65,.016,'#cfc4ad'],stool:['梳妆凳',.43,.43,.44,'#ba9c8c'],
+ washer:['滚筒洗衣机',.60,.65,.85,'#e2e4e1'],laundry:['叠放洗烘套装',.60,.68,1.72,'#d5d8d5'],
+ dishwasher:['嵌入式洗碗机',.60,.60,.78,'#c2c9c8'],robot:['扫拖机器人＋基站',.46,.51,.55,'#e3e4df'],
+ tv:['电视＋矮柜',1.86,.36,1.37,'#c5ae93']
 };
 const roomBy=id=>rooms.find(r=>r.id===id);
 const roomArea=r=>r.areas.reduce((n,[x,y,X,Y])=>n+(X-x)*(Y-y),0);
@@ -433,6 +565,46 @@ function scene(state,focus,selected,cut,active,detailItem=null){
  const [name,w,d,h]=library[o.type],c=o.color,x=-w/2,y=-d/2;
  owner=o.id;origin=[o.x,o.y];A=o.w/w;B=o.d/d;cs=Math.round(Math.cos(o.rot*Math.PI/180));sn=Math.round(Math.sin(o.rot*Math.PI/180));
  const soft=tone(c,1.07),deep=tone(c,.86),z=.035;
+ if(['washer','laundry','dishwasher','robot','tv'].includes(o.type)){
+ if(o.type==='washer'||o.type==='laundry'){
+ const count=o.type==='laundry'?2:1,unit=h/count;
+ for(let i=0;i<count;i++){
+ const base=i*unit,front=y+d-.039,center=base+.40;
+ cushion(x+.018,y+.015,base+.04,w-.036,d-.055,unit-.05,c,.045);
+ box(x+.025,front,base+.695,w-.05,.015,.102,soft);
+ box(x+.052,front+.016,base+.726,.133,.003,.033,deep);
+ box(.051,front+.016,base+.727,.100,.006,.037,'#263731');
+ box(.078,front+.023,base+.743,.047,.003,.006,'#a2d6c1');
+ rod([.202,front+.016,base+.748],[.202,front+.031,base+.748],.028,'#a8b0ae',16);
+ rod([0,front,center],[0,front+.020,center],.220,'#909e9b',24);
+ rod([0,front+.021,center],[0,front+.027,center],.188,'#293e3d',24);
+ rod([-.025,front+.028,center-.034],[-.025,front+.031,center-.034],.132,'#4d6360',24);
+ for(let j=0;j<5;j++)box(-.115+j*.043,front+.031,center+.038,.013,.002,.005,'#829793');
+ }
+ }else if(o.type==='dishwasher'){
+ box(x,y,z,w,d-.025,h-z,c);
+ box(x+.023,y+d-.026,.08,w-.046,.014,h-.101,soft);
+ box(x+.022,y+d-.012,h-.105,w-.044,.010,.082,'#40514e');
+ for(let j=0;j<5;j++)box(x+.059+j*.041,y+d-.002,h-.07,.012,.002,.011,'#a6c5b9');
+ rod([-.175,y+d-.019,h-.147],[.175,y+d-.019,h-.147],.016,metal);
+ }else if(o.type==='robot'){
+ box(x+.014,y+.01,z,w-.028,.199,h-z-.01,c);
+ cushion(x+.019,y+.018,h-.015,w-.038,.18,.015,soft,.021);
+ box(x+.037,y+.211,.036,w-.074,.270,.018,'#758a86');
+ cyl(0,.074,.053,.17,.17,.080,soft,26);
+ cyl(0,.074,.133,.161,.161,.012,deep,24);
+ cyl(.048,.046,.145,.044,.044,.033,soft,16);
+ box(-.026,.151,.146,.052,.018,.006,'#5c9489');
+ }else{
+ board(x,y,.075,w,d,.31,c);legs(w,d,.06,deep);
+ for(let i=1;i<3;i++)box(x+w*i/3,y+d-.012,.085,.008,.014,.282,deep);
+ box(-.06,y+.15,.385,.12,.08,.14,dark);
+ box(x+.068,y+.125,.52,w-.136,.048,.84,'#384542');
+ polygon([[x+.087,y+.175,.54],[-x-.087,y+.175,.54],[-x-.087,y+.175,1.34],[x+.087,y+.175,1.34]],'#182d31');
+ polygon([[x+.09,y+.177,1.33],[-.15,y+.177,1.33],[-x-.09,y+.177,.92],[-x-.09,y+.177,.77]],'#26464b');
+ box(.022,y+.174,.529,.022,.006,.007,'#8ccbb2');
+ }
+ }else{
  if(o.type!=='rug')flat(x+.016,y+.025,z-.008,w-.012,d-.018,'#b3a58e');
  switch(o.type){
  case 'sofa':
@@ -492,6 +664,7 @@ function scene(state,focus,selected,cut,active,detailItem=null){
  case 'rug':flat(x,y,.016,w,d,c);flat(x+.04,y+.04,.017,w-.08,d-.08,soft);flat(x+.076,y+.076,.018,w-.152,d-.152,c);break;
  }
  itemDetails(o.type,x,y,w,d,h,c);
+ }
  if(selected instanceof Set?selected.has(o.id):o.id===selected){
  const s=.024,col='#b96437',lev=o.type==='rug'?.021:.034;
  flat(x-.025,y-.025,lev,w+.05,s,col);flat(x-.025,y+d,lev,w+.05,s,col);flat(x-.025,y,lev,s,d,col);flat(x+w,y,lev,s,d,col);
@@ -554,6 +727,232 @@ function shade(pixels,zBuffer,cam,w,h,light){
  if(!blocked)continue;const f=1-blocked*.041,col=pixels[i],r=(col&255)*f,g=((col>>>8)&255)*f,bl=((col>>>16)&255)*(f+.008);
  pixels[i]=0xff000000|(Math.min(255,bl)<<16)|(g<<8)|r;
  }}
+}
+
+const applianceBudget = [
+ ['air', '客餐厅柜机＋3 台挂机', 9500, 12500],
+ ['fridge', '十字门冰箱', 2000, 3200],
+ ['washer', '滚筒洗衣机', 1500, 2200],
+ ['laundry', '热泵洗烘套装', 4500, 6400],
+ ['range', '油烟机＋灶具', 2700, 3800],
+ ['waterHeater', '恒温燃气热水器', 1300, 2000],
+ ['bathFans', '两卫暖风浴霸', 1100, 1600],
+ ['tv', '客厅电视', 3200, 4300],
+ ['network', '网络、中枢、基础灯具与小厨电', 2200, 3600],
+ ['dishwasher', '13–16 套洗碗机', 2600, 3500],
+ ['robot', '自动上下水扫拖机器人', 2500, 3500],
+ ['filter', '厨下 RO 净水器', 1000, 1500],
+ ['controls', '门锁、智能开关和传感器', 2200, 3500],
+ ['curtains', '客厅和主卧电动窗帘', 1200, 1800],
+ ['guestAir', '次卧挂机', 1800, 2500]
+];
+
+const scenes = {
+ morning: {
+  title:'早安', caption:'开窗帘 · 卧室调温',
+  summary:'主卧开帘，儿童房空调进入起床设定。厨房保留日常照明。',
+  rooms:{master:1.12,child:1.07,kitchen:1.02},
+  devices:{master:'窗帘打开',child:'空调进入起床设定'}
+ },
+ movie: {
+  title:'观影', caption:'合窗帘 · 留氛围灯',
+  summary:'客厅合帘，主灯调暗，保留电视墙氛围灯。',
+  ambient:.64, rooms:{living:.89},
+  devices:{tv:'客厅合帘，氛围灯亮起'}
+ },
+ night: {
+  title:'起夜', caption:'两卫低亮度照明',
+  summary:'模拟有人经过，主卫和公卫只亮低位夜灯。',
+  ambient:.59, rooms:{suite:1.04,bath:1.04,hall:.83},
+  devices:{suite:'夜灯低亮度开启',bath:'夜灯低亮度开启'}
+ },
+ away: {
+  title:'离家', caption:'关公共灯 · 开始扫拖',
+  summary:'公共区灯光关闭，扫拖机器人开始清扫。',
+  ambient:.84, rooms:{hall:.68,living:.71,kitchen:.71},
+  devices:{entry:'公共区照明关闭',robot:'开始扫拖'}
+ }
+};
+
+const devicePoints = {
+ entry:{label:'入户门锁',short:'门锁',room:'hall',pos:[.62,.55],prep:'核对门厚、锁体与开门方向，测试门口蓝牙覆盖。'},
+ tv:{label:'电视与观影',short:'观影',room:'living',pos:[.68,.72],models:['tv'],prep:'电视墙留电源、网口和穿线管，窗边留窗帘电机电源。'},
+ master:{label:'主卧电动窗帘',short:'窗帘',room:'master',pos:[.59,.57],prep:'确定窗帘轨道和电机侧，再留窗帘盒电源。床头可设一键睡眠。'},
+ child:{label:'儿童房空调',short:'空调',room:'child',pos:[.65,.40],prep:'按实测负荷选匹数，内机出风避开床头和书桌。'},
+ studio:{label:'工作台与镜前灯',short:'分区灯',room:'studio',pos:[.42,.53],prep:'电子台和化妆镜分两路照明。工作台留网口、插座和排烟位置。'},
+ kitchen:{label:'洗碗机与厨下净水',short:'厨电',room:'kitchen',pos:[.48,.48],models:['dishwasher'],prep:'洗碗机靠水槽柜，按型号定开孔，预留进排水和可检修电源。'},
+ suite:{label:'主卫感应夜灯',short:'主卫灯',room:'suite',pos:[.45,.53],prep:'夜灯独立分路，人在传感器装在干区并按说明书确定位置。'},
+ bath:{label:'公卫感应夜灯',short:'公卫灯',room:'bath',pos:[.52,.53],prep:'夜灯和排风各自控制，台盆柜底可放水浸传感器。'},
+ laundry:{label:'洗衣与烘干',short:'洗烘',room:'balcony',pos:[.28,.54],models:['washer','laundry'],prep:'按机型预留进水、排水、电源和开门空间，叠放按厂商支架要求。'},
+ robot:{label:'扫拖基站',short:'扫拖',room:'balcony',fallback:'living',pos:[.71,.68],models:['robot'],prep:'自动上下水版需预留进排水和电源，按机型留出回站通道。'}
+};
+
+const budgetStorageKey = 'xiaowu.appliance-budget.v1';
+const money = new Intl.NumberFormat('zh-CN');
+let smartMode = false;
+let previewScene = '';
+let activeDevice = 'tv';
+let budgetSelection = new Set(applianceBudget.map(([id])=>id).filter(id=>!['washer','guestAir'].includes(id)));
+const budgetInputs = new Map();
+const devicePins = new Map();
+const scenarioButtons = new Map();
+let pointLayout = '';
+
+function estimateBudget(selected){
+ const total = [0,0];
+ for(const [id,,low,high] of applianceBudget){
+  if(!selected.has(id))continue;
+  total[0]+=low;
+  total[1]+=high;
+ }
+ return total;
+}
+
+function budgetRange(low,high){
+ return low===high?'¥'+money.format(low):'¥'+money.format(low)+'–'+money.format(high);
+}
+
+function refreshBudget(){
+ for(const [id,input] of budgetInputs)input.checked=budgetSelection.has(id);
+ $('budgetTotal').textContent=budgetRange(...estimateBudget(budgetSelection));
+}
+
+function toggleBudget(id,checked){
+ if(checked){
+  budgetSelection.add(id);
+  if(id==='washer')budgetSelection.delete('laundry');
+  if(id==='laundry')budgetSelection.delete('washer');
+ }else budgetSelection.delete(id);
+ try{localStorage.setItem(budgetStorageKey,JSON.stringify([...budgetSelection]))}catch{}
+ refreshBudget();
+}
+
+function initSmartHome(){
+ try{
+  const saved=JSON.parse(localStorage.getItem(budgetStorageKey));
+  if(Array.isArray(saved)){
+   budgetSelection=new Set(applianceBudget.map(([id])=>id).filter(id=>saved.includes(id)));
+   if(budgetSelection.has('laundry'))budgetSelection.delete('washer');
+  }
+ }catch{}
+ for(const [id,name,low,high] of applianceBudget){
+  const row=document.createElement('label'),input=document.createElement('input');
+  const nameLabel=document.createElement('span'),price=document.createElement('span');
+  row.className='budget-row';input.type='checkbox';nameLabel.textContent=name;price.textContent=budgetRange(low,high);
+  input.onchange=e=>toggleBudget(id,e.target.checked);
+  row.append(input,nameLabel,price);$('budgetRows').append(row);budgetInputs.set(id,input);
+ }
+ refreshBudget();
+ for(const [id,preset] of Object.entries(scenes)){
+  const button=document.createElement('button'),caption=document.createElement('span');
+  button.type='button';button.textContent=preset.title;
+  caption.textContent=preset.caption;button.append(caption);
+  button.onclick=()=>{previewScene=previewScene===id?'':id;refreshSmartHome();requestDraw()};
+  $('scenarioButtons').append(button);scenarioButtons.set(id,button);
+ }
+ for(const [id,device] of Object.entries(devicePoints)){
+  const button=document.createElement('button'),dot=document.createElement('i'),label=document.createElement('span');
+  button.type='button';button.className='smart-pin';button.setAttribute('aria-label',device.label);
+  dot.setAttribute('aria-hidden','true');label.textContent=device.short;button.append(dot,label);
+  button.onclick=()=>selectDevice(id);devicePins.set(id,button);$('smartPins').append(button);
+ }
+ $('devicePicker').onchange=e=>selectDevice(e.target.value);
+ $('designMode').onclick=()=>setSmartMode(false);
+ $('smartMode').onclick=()=>setSmartMode(true);
+ $('tryAppliance').onclick=()=>{
+  const target=devicePoints[activeDevice],room=pointRoom(target);
+  const type=target.models.find(id=>budgetSelection.has(id))||target.models[0];
+  if(!room)return;
+  setSmartMode(false);
+  focus=room.id;view.zoom=1;chooseRoom(room.id);$('catalog').value=type;addFurniture(type);
+  $('catalog').focus();
+ };
+}
+
+function setSmartMode(on){
+ if(smartMode===on)return;
+ smartMode=on;focus=null;closeup=false;view.zoom=1;
+ selectIds([]);sync();
+}
+
+function pointRoom(device){
+ return roomBy(device.room)||roomBy(device.fallback);
+}
+
+function selectDevice(id){
+ if(!Object.hasOwn(devicePoints,id)||!pointRoom(devicePoints[id]))return;
+ activeDevice=id;refreshSmartHome();requestDraw();
+}
+
+function refreshSmartHome(){
+ $('designPanel').hidden=smartMode;
+ $('smartPanel').hidden=!smartMode;
+ $('smartPins').hidden=!smartMode;
+ $('scenarioButtons').hidden=!smartMode;
+ $('multi').hidden=smartMode;
+ $('labels').hidden=smartMode;
+ toggle('designMode',!smartMode);toggle('smartMode',smartMode);
+ $('stageHint').textContent=smartMode?'点击设备点位查看详情 · 拖动旋转 · 滚轮缩放':'拖动旋转或移动 · Shift 加选 / 框选 · 滚轮缩放';
+ const preset=smartMode?scenes[previewScene]:null;
+ stage.dataset.preview=preset?previewScene:'';
+ if(!smartMode)return;
+ if(pointLayout!==state.layout){
+  const visible=Object.entries(devicePoints).filter(([,device])=>pointRoom(device));
+  $('devicePicker').replaceChildren(...visible.map(([id,device])=>option(id,device.label)));
+  if(!pointRoom(devicePoints[activeDevice]))activeDevice='tv';
+  pointLayout=state.layout;
+ }
+ for(const [id,button] of scenarioButtons){
+  button.classList.toggle('on',id===previewScene);
+  button.setAttribute('aria-pressed',String(id===previewScene));
+ }
+ $('scenarioSummary').hidden=!preset;
+ $('scenarioSummary').textContent=preset?preset.summary:'';
+ const device=devicePoints[activeDevice],room=pointRoom(device);
+ $('deviceRoom').textContent=room.name;
+ $('devicePicker').value=activeDevice;
+ $('deviceStatus').textContent=preset?.devices[activeDevice]||(preset?'当前场景未触发':'点位示意');
+ $('devicePrep').textContent=device.prep;
+ $('tryAppliance').hidden=!device.models;
+ $('sceneLabel').textContent=(preset?preset.title:'设备点位')+' · '+device.label;
+}
+
+function placeDevicePins(cam,w,h){
+ if(!smartMode)return;
+ const live=scenes[previewScene]?.devices||{};
+ for(const [id,button] of devicePins){
+  const device=devicePoints[id],room=pointRoom(device);
+  button.hidden=!room||(focus&&room.id!==focus);
+  if(button.hidden)continue;
+  const [x,y,X,Y]=room.areas[0];
+  const mirror=layouts[state.layout].mirror;
+  const [u,v]=device.pos;
+  const px=x+(X-x)*(mirror?1-u:u),py=y+(Y-y)*v;
+  const p=cam.project(px,py,topView?0:.76);
+  button.hidden=p[0]<0||p[0]>w||p[1]<0||p[1]>h;
+  if(button.hidden)continue;
+  button.style.left=100*p[0]/w+'%';button.style.top=100*p[1]/h+'%';
+  button.classList.toggle('is-live',Object.hasOwn(live,id));
+  button.setAttribute('aria-pressed',String(id===activeDevice));
+ }
+}
+
+function applyPreviewLighting(pixels,ids){
+ const preset=smartMode&&scenes[previewScene];
+ if(!preset)return;
+ const ambient=preset.ambient||1;
+ const tintByRoom=id=>preset.rooms[id]||ambient;
+ const tintByOwner=new Map(rooms.map((room,index)=>[index+1,tintByRoom(room.id)]));
+ for(const item of state.items)tintByOwner.set(item.id,tintByRoom(item.room));
+ for(let i=0;i<pixels.length;i++){
+  const factor=tintByOwner.get(ids[i]);
+  if(!factor||factor===1)continue;
+  const color=pixels[i];
+  const r=Math.min(255,(color&255)*factor);
+  const g=Math.min(255,((color>>>8)&255)*factor);
+  const b=Math.min(255,((color>>>16)&255)*factor);
+  pixels[i]=0xff000000|(b<<16)|(g<<8)|r;
+ }
 }
 
 const $=id=>document.getElementById(id);
@@ -679,6 +1078,7 @@ function sync(){
  $('undo').disabled=!undoStack.length;$('save').textContent=status;
  toggle('three',!topView);toggle('top',topView);toggle('labels',showLabels);toggle('cut',cut);toggle('focus',!!focus);
  $('sceneLabel').textContent=closeup?library[o.type][0]+' · 特写':(focus?r.name+' · '+areaText(roomArea(r)):'全屋模型')+'  /  '+(topView?'俯视平面':'轴测视图');
+ refreshSmartHome();
  shapeDirty=true;requestDraw();
 }
 function changeLayout(id){
@@ -715,6 +1115,8 @@ function showChoices(area){
 }
 function refreshPlans(){
  const l=layouts[state.layout],p=plans[l.base];$('areaFilter').value=p.area;showChoices(p.area);
+ $('activePlan').textContent=l.reference?'紫气东来':p.title;
+ $('planChip').textContent=(p.estimated?'约 ':'')+p.area+' ㎡'+(l.mirror?' · 东西镜像':'');
  const variants=Object.values(layouts).filter(v=>v.base===l.base&&!!v.mirror===!!l.mirror);
  $('variant').replaceChildren(...variants.map(v=>option(v.id,v.reference?'按图布置':placementName(v))));$('variant').value=l.id;
  $('variant').disabled=variants.length===1;
@@ -740,15 +1142,16 @@ function resizeOrRotate(changes){
 for(const [id,k] of [['width','w'],['depth','d']])$(id).onchange=e=>{const v=e.target.valueAsNumber;if(!Number.isFinite(v)||v<.2||v>5){message('尺寸范围为 0.20 至 5.00 米。');sync();return}resizeOrRotate({[k]:v})};
 $('rotate').onclick=()=>{if(getItem())resizeOrRotate({rot:(getItem().rot+90)%360})};
 $('remove').onclick=()=>commit(()=>{state.items=state.items.filter(o=>o.id!==selected);selected=null});
-$('add').onclick=()=>{
+function addFurniture(type){
  if(state.items.length>=220){message('当前方案最多容纳 220 件家具。');return}
- const r=roomBy(current),[x,y,X,Y]=bounds(r),o=makeItem($('catalog').value,current,(x+X)/2,(y+Y)/2);
+ const r=roomBy(current),[x,y,X,Y]=bounds(r),o=makeItem(type,current,(x+X)/2,(y+Y)/2);
  o.id=Math.max(99,...state.items.map(i=>i.id))+1;
  if(!nearestFit(o)){message('当前房间放不下这件家具。');return}
  const others=state.items.filter(i=>i.room===current);
  if(others.some(b=>overlap(o,b))){let done=false;for(let j=y+.18;j<Y&&!done;j+=.18)for(let i=x+.18;i<X;i+=.18){const cand={...o,x:i,y:j};if(fits(cand)&&!others.some(b=>overlap(cand,b))){o.x=i;o.y=j;done=true;break}}}
  commit(()=>{state.items.push(o);selected=o.id});
-};
+}
+$('add').onclick=()=>addFurniture($('catalog').value);
 $('undo').onclick=()=>{if(!undoStack.length)return;drafts[state.layout]=clone(state);state=JSON.parse(undoStack.pop());useLayout(state.layout);if(!getItem()||getItem().room!==current)selected=null;persist();sync()};
 $('exportBtn').onclick=()=>{
  const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=layoutTitle()+'-装修方案.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);message('方案已导出，可在此页面重新导入。');
@@ -771,14 +1174,23 @@ function draw(){
  const detail=closeup?getItem():null;
  if(shapeDirty){faceCache=scene(state,focus,selection,cut,current,detail);lightCache=buildLight(faceCache,focus,detail);shapeDirty=false}
  cam=camera(view,w,h,focus,detail);const pixels=new Uint32Array(buffer.data.buffer);
- raster(faceCache,cam,w,h,pixels,depthBuf,idBuf);shade(pixels,depthBuf,cam,w,h,lightCache);if(selection.size&&!closeup){
+ raster(faceCache,cam,w,h,pixels,depthBuf,idBuf);shade(pixels,depthBuf,cam,w,h,lightCache);
+ applyPreviewLighting(pixels,idBuf);
+ if(selection.size&&!closeup){
  const lineColor=0xff3e78b2,edge=Math.max(1,Math.round(ratio));
  for(let y=edge;y<h-edge;y++)for(let x=edge,i=y*w+edge;x<w-edge;x++,i++){
  const hit=idBuf[i];if(hit>=100&&selection.has(hit)&&(idBuf[i-edge]!==hit||idBuf[i+edge]!==hit||idBuf[i-w*edge]!==hit||idBuf[i+w*edge]!==hit))pixels[i]=lineColor;
  }}
  ctx.putImageData(buffer,0,0);
  $('zoomText').textContent=Math.round(view.zoom*100)+'%';
- const tags=$('tags');tags.replaceChildren();if(showLabels&&!focus&&!closeup){
+ $('planScale').hidden=!topView||closeup;
+ if(topView&&!closeup){
+ const metres=focus?1:2;
+ $('scaleLabel').textContent=metres+' m';
+ $('scaleLine').style.width=(cam.project(metres,0,0)[0]-cam.project(0,0,0)[0])/ratio+'px';
+ }
+ placeDevicePins(cam,w,h);
+ const tags=$('tags');tags.replaceChildren();if(showLabels&&!focus&&!closeup&&!smartMode){
  for(const r of rooms){
  const [x,y,X,Y]=r.areas[0],p=cam.project((x+X)/2,(y+Y)/2,topView?0:.65);
  const el=document.createElement('span'),size=document.createElement('small');
@@ -824,7 +1236,7 @@ canvas.onpointerdown=e=>{
  if(drag||e.button!==0||!cam)return;e.preventDefault();canvas.focus({preventScroll:true});
  const [x,y]=xy(e),hit=idBuf[Math.floor(y)*canvas.width+Math.floor(x)],o=state.items.find(i=>i.id===hit);
  const add=!!(e.shiftKey||multiMode),prior=[...selection],was=selection.has(hit);
- const kind=closeup?'orbit':o?'move':add?'box':'orbit';
+ const kind=closeup||smartMode?'orbit':o?'move':add?'box':'orbit';
  drag={id:e.pointerId,sx:e.clientX,sy:e.clientY,px:x,py:y,start:cam.ground(x,y),yaw:view.yaw,pitch:view.pitch,hit,o,was,add,prior,kind,moved:false};
  canvas.setPointerCapture(e.pointerId);
  if(kind==='move'){
@@ -850,7 +1262,7 @@ function endDrag(e,cancel=false){
  if(!d.moved){if(d.add&&d.was)selectIds(d.prior.filter(id=>id!==d.hit));else if(!d.add)selectIds([d.hit])}
  if(d.before!==snap()){pushUndo(d.before);persist()}
  }else if(d.kind==='box'&&d.moved){selectIds([...d.prior,...pickedRect(d.px,d.py,...xy(e))])}
- else if(d.kind==='orbit'&&!d.moved&&!closeup){selectIds([]);if(d.hit>0&&d.hit<=rooms.length)current=rooms[d.hit-1].id}
+ else if(d.kind==='orbit'&&!d.moved&&!closeup&&!smartMode){selectIds([]);if(d.hit>0&&d.hit<=rooms.length)current=rooms[d.hit-1].id}
  sync();
 }
 canvas.onpointerup=e=>endDrag(e);canvas.onpointercancel=e=>endDrag(e,true);
@@ -869,5 +1281,6 @@ $('exitDetail').onclick=()=>{closeup=false;view.zoom=1;sync()};
 
 
 if(window.ResizeObserver)new ResizeObserver(requestDraw).observe(stage);else window.addEventListener('resize',requestDraw);
+initSmartHome();
 sync();
 </script></body></html>
