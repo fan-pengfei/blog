@@ -135,6 +135,17 @@ header { background: #192e28; color: #f5f6ef; border: 0; }
   .smart-pin { padding: 3px 5px; min-height: 25px; font-size: 10px; gap: 3px; }
   .smart-pin i { width: 5px; height: 5px; }
 }
+#clearanceLines{position:absolute;inset:0;pointer-events:none}
+.measure-line{position:absolute;height:1px;border-top:2px dashed #075e5a;filter:drop-shadow(0 1px 0 white)}
+.measure-line.vertical{width:1px;height:auto;border-top:0;border-left:2px dashed #075e5a}
+.measure-line span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fffef6;color:#194541;border:1px solid #9eb8b0;border-radius:4px;padding:0 3px;font:600 10px/1.35 var(--sans)}
+#clearancePanel{padding:10px 14px;border-top:1px solid var(--line);background:#f3f6ed}
+#clearancePanel strong{font-size:13px}
+#clearancePanel small{display:block;color:var(--quiet);font-size:11px}
+#clearanceValues{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:6px 0}
+#clearanceValues div{border-left:2px solid #8aa99d;padding-left:7px;font-size:12px}
+#clearanceValues b{font-variant-numeric:tabular-nums;white-space:nowrap}
+@media(max-width:500px){#clearanceValues{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 </style></head><body><header><div class="bar"><div class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="5" fill="#365b47"/><path d="m6 12 10-6 10 6v11l-10 5-10-5zm0 0 10 6 10-6m-10 6v10m-5-13v-6" fill="none" stroke="#f3efde" stroke-width="1.35"/></svg>乖乖和我的小屋 <small>家装设计室</small></div><div class="actions"><button id="undo" title="撤销上一次编辑">撤销</button><button id="importBtn">导入方案</button><button class="primary" id="exportBtn">导出方案</button><input type="file" id="file" accept=".json,application/json" hidden></div></div></header>
 <main><div class="titlebar"><div><h1 id="activePlan">乖乖和我的小屋</h1><p id="planSubtitle">三室一厅两卫 · 主卧套房 / 儿童房 / 电子工作室兼化妆间</p></div><div class="spec" id="spec"></div></div>
@@ -143,11 +154,11 @@ header { background: #192e28; color: #f5f6ef; border: 0; }
 <button id="styleMode" type="button" aria-controls="stylePanel" aria-pressed="false">风格试衣间</button>
 <button id="smartMode" type="button" aria-controls="smartPanel" aria-pressed="false">米家体验<span class="mode-dot" aria-hidden="true"></span></button>
 </div>
-<div class="tools"><div class="seg"><button id="three" class="on">3D 视图</button><button id="top">俯视平面</button></div><div class="group"><button id="multi">多选</button><button id="labels">房名与面积</button><button id="cut">低墙</button><button id="home">全屋复位</button></div></div><div id="scenarioButtons" class="scenario-grid" role="group" aria-label="联动场景" hidden></div><div id="quickStyle" hidden><label>搭配 <select id="quickPalette"></select></label><label>光线 <select id="quickSun"></select></label></div><div class="stage" id="stage"><canvas id="canvas" tabindex="0" aria-label="三维户型，可拖动空白处旋转，选中家具后拖动移动；方向键微调家具位置"></canvas><canvas id="beforeCanvas" aria-hidden="true" hidden></canvas>
+<div class="tools"><div class="seg"><button id="three" class="on">3D 视图</button><button id="top">俯视平面</button></div><div class="group"><button id="clearanceButton" type="button" aria-controls="clearancePanel" aria-pressed="false">测间距</button><button id="multi">多选</button><button id="labels">房名与面积</button><button id="cut">低墙</button><button id="home">全屋复位</button></div></div><div id="scenarioButtons" class="scenario-grid" role="group" aria-label="联动场景" hidden></div><div id="quickStyle" hidden><label>搭配 <select id="quickPalette"></select></label><label>光线 <select id="quickSun"></select></label></div><div class="stage" id="stage"><canvas id="canvas" tabindex="0" aria-label="三维户型，可拖动空白处旋转，选中家具后拖动移动；方向键微调家具位置"></canvas><canvas id="beforeCanvas" aria-hidden="true" hidden></canvas>
 <div id="wipeLayer" aria-hidden="true" hidden><span>原方案</span><span>试搭</span><i id="wipeHandle">↔</i></div>
 <div id="planScale" aria-hidden="true" hidden><div class="north-arrow">▲<span>北</span></div><div><span id="scaleLabel"></span><i id="scaleLine"></i></div></div>
 <div id="smartPins" class="smart-pins" role="group" aria-label="全屋设备点位" hidden></div>
-<div id="marquee" hidden></div><button id="exitDetail" hidden>退出特写</button><div class="tags" id="tags"></div><span class="scene-label" id="sceneLabel"></span><div class="zoom-bar"><button id="out" aria-label="缩小">−</button><button id="in" aria-label="放大">＋</button></div></div><div id="wipeTools" hidden><label for="wipeRange">前后对比</label><input id="wipeRange" aria-label="原方案在左侧所占比例" type="range" min="0" max="100" value="45"><output id="wipeValue" for="wipeRange">45%</output></div><div class="hint"><span id="stageHint">拖动旋转或移动 · Shift 加选 / 框选 · 滚轮缩放</span><span id="zoomText"></span></div></section>
+<div id="clearanceLines" aria-hidden="true" hidden></div><div id="marquee" hidden></div><button id="exitDetail" hidden>退出特写</button><div class="tags" id="tags"></div><span class="scene-label" id="sceneLabel"></span><div class="zoom-bar"><button id="out" aria-label="缩小">−</button><button id="in" aria-label="放大">＋</button></div></div><section id="clearancePanel" aria-label="家具间距" hidden><strong id="clearanceTitle"></strong><div id="clearanceValues"></div><small>从家具四边中点量到同房间家具或房间边界，忽略地毯。数值按模型估算。</small></section><div id="wipeTools" hidden><label for="wipeRange">前后对比</label><input id="wipeRange" aria-label="原方案在左侧所占比例" type="range" min="0" max="100" value="45"><output id="wipeValue" for="wipeRange">45%</output></div><div class="hint"><span id="stageHint">拖动旋转或移动 · Shift 加选 / 框选 · 滚轮缩放</span><span id="zoomText"></span></div></section>
 </div>
 <aside class="panel">
 <div id="stylePanel" hidden>
@@ -1136,6 +1147,84 @@ function drawBeforeRoom(camera,w,h,pixels){
  before.getContext('2d').putImageData(buffer,0,0);
 }
 
+let measuring=false;
+const measureDirections=[
+ {name:'北',axis:1,sign:-1},{name:'东',axis:0,sign:1},
+ {name:'南',axis:1,sign:1},{name:'西',axis:0,sign:-1}
+];
+
+function furnitureClearances(item,areas,items){
+ const size=ext(item),center=[item.x,item.y],epsilon=1e-7;
+ const blockers=items.filter(b=>b.room===item.room&&b.id!==item.id&&b.type!=='rug')
+  .map(b=>({item:b,center:[b.x,b.y],size:ext(b)}));
+ return measureDirections.map(({axis,sign})=>{
+  const cross=1-axis,level=center[cross];
+  const origin=sign*center[axis],edge=origin+size[axis]/2;
+  const intervals=areas.filter(rect=>rect[cross]<=level&&level<=rect[cross+2])
+   .map(rect=>sign>0?[rect[axis],rect[axis+2]]:[-rect[axis+2],-rect[axis]])
+   .sort((a,b)=>a[0]-b[0]);
+  let boundary=origin;
+  for(const [lo,hi] of intervals){
+   if(lo>boundary+epsilon)break;
+   boundary=Math.max(boundary,hi);
+  }
+  let distance=Math.max(0,boundary-edge),target='房间边界';
+  for(const b of blockers){
+   if(Math.abs(level-b.center[cross])>b.size[cross]/2+epsilon)continue;
+   const mid=sign*b.center[axis],half=b.size[axis]/2;
+   if(mid+half<edge-epsilon)continue;
+   const gap=Math.max(0,mid-half-edge);
+   if(gap<distance){distance=gap;target=library[b.item.type][0]}
+  }
+  const start=[...center],end=[...center];
+  start[axis]=sign*edge;end[axis]=sign*(edge+distance);
+  return {start,end,cm:Math.round(distance*100),target};
+ });
+}
+
+const measureMarkers=[];
+function initClearance(){
+ for(const {name,axis} of measureDirections){
+  const line=document.createElement('i'),label=document.createElement('span');
+  line.className=axis?'measure-line vertical':'measure-line';
+  line.append(label);$('clearanceLines').append(line);
+  const cell=document.createElement('div'),value=document.createElement('b'),target=document.createElement('small');
+  cell.append(name+'　',value,target);$('clearanceValues').append(cell);
+  measureMarkers.push({line,label,value,target});
+ }
+ $('clearanceButton').onclick=()=>{
+  measuring=!measuring;
+  if(measuring){closeup=false;if(!topView){mode(true);return}}
+  sync();
+ };
+}
+
+function syncClearance(){
+ const available=!smartMode&&!styleMode;
+ if(!available||!topView||closeup)measuring=false;
+ $('clearanceButton').hidden=!available;toggle('clearanceButton',measuring);
+ $('clearancePanel').hidden=!measuring;
+ const item=selection.size===1?getItem():null;
+ $('clearanceValues').hidden=$('clearanceLines').hidden=!measuring||!item;
+ if(measuring)$('clearanceTitle').textContent=item?library[item.type][0]+' · 四向间距':'点选一件家具，查看四个方向的距离';
+}
+
+function drawClearance(camera,ratio){
+ if(!measuring||selection.size!==1)return;
+ const item=getItem();if(!item)return;
+ const readings=furnitureClearances(item,roomBy(item.room).areas,state.items);
+ readings.forEach(({start,end,cm,target},i)=>{
+  const a=camera.project(...start,0),b=camera.project(...end,0);
+  const {line,label,value,target:caption}=measureMarkers[i];
+  line.style.left=Math.min(a[0],b[0])/ratio+'px';
+  line.style.top=Math.min(a[1],b[1])/ratio+'px';
+  const length=Math.hypot(a[0]-b[0],a[1]-b[1])/ratio;
+  line.style[measureDirections[i].axis?'height':'width']=Math.max(1,length)+'px';
+  label.hidden=length<32;label.textContent=cm+'';
+  value.textContent=cm+' cm';caption.textContent=target;
+ });
+}
+
 const $=id=>document.getElementById(id);
 const cleanColor=v=>typeof v==='string'&&/^#[a-f0-9]{6}$/i.test(v);
 const key='qiju.local.3d.layout.v1', archiveKey='qiju.3d.combinations.v2';
@@ -1261,6 +1350,7 @@ function sync(){
  $('sceneLabel').textContent=closeup?library[o.type][0]+' · 特写':(focus?r.name+' · '+areaText(roomArea(r)):'全屋模型')+'  /  '+(topView?'俯视平面':'轴测视图');
  refreshSmartHome();
  refreshStyleRoom();
+ syncClearance();
  shapeDirty=true;requestDraw();
 }
 function changeLayout(id){
@@ -1379,8 +1469,9 @@ function draw(){
  $('scaleLabel').textContent=metres+' m';
  $('scaleLine').style.width=(cam.project(metres,0,0)[0]-cam.project(0,0,0)[0])/ratio+'px';
  }
+ drawClearance(cam,ratio);
  placeDevicePins(cam,w,h);
- const tags=$('tags');tags.replaceChildren();if(showLabels&&!focus&&!closeup&&!smartMode&&!styleMode){
+ const tags=$('tags');tags.replaceChildren();if(showLabels&&!measuring&&!focus&&!closeup&&!smartMode&&!styleMode){
  for(const r of rooms){
  const [x,y,X,Y]=r.areas[0],p=cam.project((x+X)/2,(y+Y)/2,topView?0:.65);
  const el=document.createElement('span'),size=document.createElement('small');
@@ -1471,6 +1562,7 @@ $('exitDetail').onclick=()=>{closeup=false;view.zoom=1;sync()};
 
 
 if(window.ResizeObserver)new ResizeObserver(requestDraw).observe(stage);else window.addEventListener('resize',requestDraw);
+initClearance();
 initSmartHome();
 initStyleRoom();
 sync();
